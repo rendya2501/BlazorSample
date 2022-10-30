@@ -1,0 +1,180 @@
+﻿@page "/portfolio"
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>Portfolio</title>
+    <meta name="description" content="sample text" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/sanitize.css" />
+    @*    <link href="~/css/bootstrap/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/css/site.css" rel="stylesheet" asp-append-version="true" />*@
+
+    @*[【HTML/CSS】実践！Webサイト作成から公開までの過程を解説！ ](https://www.youtube.com/watch?v=Hbxulm8iXSA&list=WL&index=9&t=3486s)*@
+    @*[sanitize.css](https://csstools.github.io/sanitize.css/)*@
+    @*[css チートシート](https://www.webcreatorbox.com/tech/css-flexbox-cheat-sheet)*@
+</head>
+<body>
+
+    <section class="section">
+        <h1 class="section-headline">About</h1>
+        <figure class="about">
+            <img class="about-image" src="https://dummyimage.com/600x400/000/fff" alt="Abount Image" />
+            <figcaption class="about-caption">
+                <h2 class="about-headline">What we can do?</h2>
+                <p class="about-description">
+                    text text text text text text text text text text text text text text text text text text text text text text text text <br />
+                    text text text text text text text text text text text text <br />
+                    <br />
+                    text text text text text text text text text text text text text text text text text text text text text text text text <br />
+                    text text text text text text text text text text text text <br />
+                    text text text text text text text text text text text text <br />
+                </p>
+            </figcaption>
+        </figure>
+    </section>
+
+    <section class="section section-secoundary">
+        <h1 class="section-headline">Feature</h1>
+
+        <ul class="grid grid-col-4">
+            <li class="grid-item">
+                <dl class="feature">
+                    <dt class="feature-headline">1. Great Service</dt>
+                    <dd class="feature-image">
+                        <img src="images/001-settings.png" alt="Great Service" width="100" height="100" />
+                    </dd>
+                    <dd class="feature-description">text text text text text text text text text text text text text text text text text text text text text text text text...</dd>
+                </dl>
+            </li>
+            <li class="grid-item">
+                <dl class="feature">
+                    <dt class="feature-headline">2. High Performance</dt>
+                    <dd class="feature-headline">
+                        <img src="images/002-layout.png" alt="High Performance" width="100" height="100" />
+                    </dd>
+                    <dd class="feature-description">text text text text text text text text text text text text text text text text text text text text text text text text...</dd>
+                </dl>
+            </li>
+            <li class="grid-item">
+                <dl class="feature">
+                    <dt class="feature-headline">3. Strong Responsibility</dt>
+                    <dd class="feature-headline">
+                        <img src="images/003-jigsaw.png" alt="Strong Responsibility" width="100" height="100" />
+                    </dd>
+                    <dd class="feature-description">text text text text text text text text text text text text text text text text text text text text text text text text...</dd>
+                </dl>
+            </li>
+            <li class="grid-item">
+                <dl class="feature">
+                    <dt class="feature-headline">4. Excellent Technology</dt>
+                    <dd class="feature-headline">
+                        <img src="images/004-product.png" alt="Excellent Technology" width="100" height="100" />
+                    </dd>
+                    <dd class="feature-description">text text text text text text text text text text text text text text text text text text text text text text text text...</dd>
+                </dl>
+            </li>
+        </ul>
+    </section>
+
+</body>
+</html>
+
+
+@code {
+
+}
+
+<style type="text/css">
+    /* Base Stryle */
+    body {
+        font-family: 'Noto Sans JP', "Helvetica Neue", "Helvetica", "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Arial", "Yu Gothic", "Meiryo", sans-serif;
+        font-size: 15px;
+        line-height 1.5;
+        color: #333;
+    }
+
+    /* section */
+    .section {
+        padding: 30px 15px;
+    }
+
+        .section.section-secoundary {
+            background: #efefef;
+        }
+
+    .section-headline {
+        text-align: center;
+        font-size: 40px;
+        font-weight: bold;
+        margin: 0 0 40px;
+    }
+
+    /* about */
+    .about {
+        margin: 0;
+        display: flex;
+    }
+
+    /*.about-image {    }*/
+
+    .about-caption {
+        padding-left: 15px;
+    }
+
+    .about-headline {
+        margin: 0 0 20px;
+        font-size: 30px;
+    }
+
+    /*.about-description {    }*/
+
+    .grid {
+        margin: 0;
+        padding: 0;
+        display: flex;
+        /*display:flexが付く要素を中央揃えにする*/
+        align-items: center;
+        justify-self: center;
+    }
+
+    .grid-item {
+        list-style: none;
+    }
+
+    .grid-col-2 > .grid-item {
+        width: 50%;
+    }
+
+    .grid-col-3 > .grid-item {
+        width: 33.3%;
+    }
+
+    .grid-col-4 > .grid-item {
+        width: 25%;
+    }
+
+    .feature {
+        text-align: center;
+        padding: 0 15px;
+    }
+
+    .feature-headline {
+        font-weight: bold;
+        margin: 0 0 20px;
+    }
+
+    .feature-img {
+        margin: 0 0 20px;
+    }
+
+    .feature-description {
+        margin: 0;
+        text-align: left;
+    }
+</style>

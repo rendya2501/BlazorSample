@@ -1,0 +1,48 @@
+﻿@if (ShowConfirmation)
+{
+    // オーバーレイ
+    <div class="modal-backdrop show"></div>
+    // モーダルダイアログ本体
+    <div class="modal fade show" style="display:block" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">@Title</h5>
+                    <button type="button" @onclick="(() => OnDecide(false))"  class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>@Content</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" @onclick="(() => OnDecide(false))" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" @onclick="(() => OnDecide(true))" class="btn btn-danger">Delete</button>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+@code {
+    [Parameter]
+    public string Title { get; set; } = "削除確認";
+
+    [Parameter]
+    public string Content { get; set; } = string.Empty;
+
+    protected bool ShowConfirmation { get; set; } = false;
+
+    [Parameter]
+    public EventCallback<bool> CallBack { get; set; }
+
+    public void Show()
+    {
+        ShowConfirmation = true;
+        StateHasChanged();
+    }
+
+    private Task OnDecide(bool result)
+    {
+        ShowConfirmation = false;
+        return CallBack.InvokeAsync(result);
+    }
+}
