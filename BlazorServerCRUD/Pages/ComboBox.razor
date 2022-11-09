@@ -1,0 +1,47 @@
+﻿@page "/combo_box"
+
+<h3>ComboBox</h3>
+
+<EditForm Model="@this.dummyModel">
+
+    <InputSelect @bind-Value="_selectId" @oninput="OnItemInput">
+        @foreach (var item in this.Values)
+        {
+            <option value="@item.id">@item.name</option>
+        }
+    </InputSelect>
+
+    <h2>選択中ID :  @SelectedItem.id</h2>
+    <h2>選択中Name :  @SelectedItem.name</h2>
+</EditForm>
+
+@code {
+    //[Blazor の InputSelect コンポーネントについて学ぶ](https://www.gunshi.info/entry/2021/11/19/020708)  
+
+    private DummyModel dummyModel = new();
+    public class DummyModel { }
+
+    protected List<(int id, string name)> Values { get; set; }
+    protected (int id, string name) SelectedItem { get; set; }
+    protected int _selectId;
+
+    protected override async Task OnInitializedAsync()
+    {
+        this.Values = new List<(int id, string name)>();
+        for (var i = 0; i < 10; i++)
+        {
+            this.Values.Add((id: i, name: $"test{i}"));
+        }
+        SelectedItem = this.Values.First();
+        _selectId = SelectedItem.id;
+    }
+
+    private void OnItemInput(ChangeEventArgs e)
+    {
+        if (e.Value == null) return;
+
+        var selected_id = Int32.Parse( e.Value.ToString()!);
+        var person = Values.FirstOrDefault(x => x.id == selected_id);
+        SelectedItem = (person.id, person.name);
+    }
+}
